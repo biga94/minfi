@@ -71,6 +71,9 @@ controlStripPlot <- function(rgSet,
         if (any((ctl$value < xlim[1]) | (ctl$value > xlim[2]))) {
             message("Warning: ", controlType, " probes outside plot range")
         }
+      
+        ctl$channel <- factor(ctl$channel, levels = c("Red", "Green"))
+      
         fig <- xyplot(
             x = sample ~ value | channel,
             groups = channel, horizontal = TRUE, pch = 19,
